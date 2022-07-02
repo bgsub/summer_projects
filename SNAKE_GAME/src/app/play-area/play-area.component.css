@@ -1,0 +1,14 @@
+.play_area_container{
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid black;
+    width: 800px;
+    height: 550px;
+}
+.canvas_container{
+    border: 1px solid black;
+    width: 750px;
+    height: 500px;
+}

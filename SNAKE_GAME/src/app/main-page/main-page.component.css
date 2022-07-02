@@ -1,0 +1,36 @@
+.main_page_container{
+    justify-content: center;
+}
+
+.box_title {
+
+    border: 1px solid black;
+    height: 195px;
+    width: 758px;
+    justify-content: center;
+    margin: 0 auto;
+    
+}
+.box_title h1{
+    text-align: center;
+}
+.main_page_buttons{
+    margin: 5% auto;
+    display: grid;
+    justify-content: center;
+    align-items: center;
+}
+.new_game_button{
+    margin-top: 7%;
+    border: 1px solid black;
+    height: 72px;
+    width: 607px;
+    cursor: pointer;
+}
+.best_scores_button{
+    margin-top: 7%;
+    border: 1px solid black;
+    height: 72px;
+    width: 607px;
+    cursor: pointer;
+}
