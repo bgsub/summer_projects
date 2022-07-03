@@ -8,13 +8,14 @@ import { GamePageComponent } from './game-page/game-page.component';
 import { PlayAreaComponent } from './play-area/play-area.component';
 import { SidebarComponent } from './sidebar/sidebar.component';
 
+
 @NgModule({
   declarations: [
     AppComponent,
     MainPageComponent,
     GamePageComponent,
     PlayAreaComponent,
-    SidebarComponent
+    SidebarComponent,
   ],
   imports: [
     BrowserModule,
