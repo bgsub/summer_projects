@@ -1,5 +1,5 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
-import { GroundService } from '../services/ground.service';
+import { GameService } from '../services/game.service';
 
 @Component({
   selector: 'app-play-area',
@@ -11,13 +11,14 @@ export class PlayAreaComponent implements OnInit {
   @ViewChild('groundCanvas',{static:true})
    private groundCanvas!: ElementRef<HTMLCanvasElement>;
   
-  constructor(private groundService: GroundService) { }
+  constructor(private gameService: GameService) { }
   ngOnInit(): void {
   }
   ngAfterViewInit(): void {
-    this.groundService.groundCtx = this.groundCanvas.nativeElement.getContext('2d') as CanvasRenderingContext2D;
-    this.groundService.initializeGround();
-    console.log(this.groundService.units)
+    this.gameService.groundCtx = this.groundCanvas.nativeElement.getContext('2d') as CanvasRenderingContext2D;
+    this.gameService.initializeGround();
+    this.gameService.initializePrey();
+    this.gameService.initializeSnake();
   }
 
 }
