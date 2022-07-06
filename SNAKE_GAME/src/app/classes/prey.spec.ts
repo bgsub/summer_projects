@@ -2,10 +2,9 @@ import { TestBed } from '@angular/core/testing';
 import { Vector } from '../interfaces/vector';
 import { GroundService } from '../services/ground.service';
 import { CanvasTestHelper } from './canvas-test-helper';
-import { Cell } from './cell';
+import { Prey } from './prey';
 
-describe('Unit', () => {
-
+describe('Prey', () => {
   let groundService: GroundService;
   let ctxStub: CanvasRenderingContext2D;
   const mockPosition: Vector = { x: 0, y: 0 };
@@ -21,10 +20,7 @@ describe('Unit', () => {
     groundService.groundCtx = ctxStub;
     groundService.initializeGround();
 });
-
-
-
   it('should create an instance', () => {
-    expect(new Cell(mockPosition.x,mockPosition.y,ctxStub)).toBeTruthy();
+    expect(new Prey(mockPosition.x,mockPosition.y,groundService.groundCtx)).toBeTruthy();
   });
 });
