@@ -11,4 +11,12 @@
     border: 1px solid black;
     width: 950px;
     height: 750px;
+    position: relative;
+}
+.ground{
+    background-color: #567d46;
+}
+.prey{
+    background-color: red ;
+    position: absolute;
 }

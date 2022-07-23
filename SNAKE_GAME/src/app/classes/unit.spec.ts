@@ -1,6 +1,6 @@
 import { TestBed } from '@angular/core/testing';
 import { Vector } from '../interfaces/vector';
-import { GroundService } from '../services/ground.service';
+import { GroundService } from '../services/game.service';
 import { CanvasTestHelper } from './canvas-test-helper';
 import { Cell } from './cell';
 

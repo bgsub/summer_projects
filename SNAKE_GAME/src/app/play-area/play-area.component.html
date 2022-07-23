@@ -1,7 +1,11 @@
 <p>play-area works!</p>
 <div class="play_area_container">
 <div class="canvas_container">
-<canvas #groundCanvas width="950" height="750"></canvas>
+<canvas class="ground" #groundCanvas width="950" height="750">
+   
+</canvas>
+ <div class="prey" [style.height.px]="gamePrey.height"  [style.width.px]="gamePrey.width" [style.top.px]="gamePrey.topPosition" [style.left.px]="gamePrey.leftPosition">     </div>
+
 </div>
 
     
