@@ -9,8 +9,8 @@
 }
 .canvas_container{
     border: 1px solid black;
-    width: 950px;
-    height: 750px;
+    width: 800px;
+    height: 800px;
     position: relative;
 }
 .ground{

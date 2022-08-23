@@ -3,6 +3,4 @@ import { Vector } from "./vector";
 
 export interface SnakeBodyPart {
     position: Vector
-    direction : Direction,
-
 }
