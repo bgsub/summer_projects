@@ -9,14 +9,15 @@ export class Snake {
     direction: Direction;
     verticalSpeed = 0;
     horizontalSpeed = 0;
+    lastSnakeStateSaved : Vector[];
 
     constructor(ctx: CanvasRenderingContext2D){
         this.snakeContext = ctx;
         this.headPosition =  canvasConstants.GROUND_CENTER;
         this.direction = Direction.Right;
-        let posX=this.headPosition.x;
-        const bodyPart : Vector = { x:posX-1 ,y:this.headPosition.y};
+        const bodyPart : Vector = { x:this.headPosition.x-1 ,y:this.headPosition.y};
         this.snakeTail.push(bodyPart); 
+        this.lastSnakeStateSaved = [];
    
     }
     
@@ -38,6 +39,7 @@ export class Snake {
             canvasConstants.SNAKE_WIDTH
         ) 
     }
+   
     drawTail()
     {
         for(const bodyPart of this.snakeTail){
@@ -50,16 +52,25 @@ export class Snake {
         ) 
         }
     }
+    saveState(){
 
+        let snakeState : Vector[] = [];
+        snakeState.push({x:this.headPosition.x,y:this.headPosition.y});
+
+        for(const tailPart of this.snakeTail) 
+           snakeState.push(tailPart); 
+        this.lastSnakeStateSaved = snakeState;       
+    }
+      
      drawSnake(){
         this.drawSnakeHead();
         this.drawTail();
-         
+        
+        
     }
     changeSnakeDirection(directionToGo:Direction)
     {
         let prevDirection = this.direction
-        console.log(prevDirection.toFixed() + ' ' + directionToGo + ' ');
         switch(directionToGo) {
             case Direction.Right: 
              if(prevDirection !== Direction.Left){
@@ -93,7 +104,24 @@ export class Snake {
              
         }
     }
+    get lastPartOfTheTail()
+    {
+        return this.snakeTail[this.snakeTail.length-1];
+    }
+    
+    addPartOnTail(position:Vector){
+        let  newPart : Vector = {x: position.x,y:position.y};
+        this.snakeTail.push(newPart);
 
+     }
+    collisionEffect()
+    {
+       
+        this.snakeContext.clearRect(0,0,canvasConstants.GROUND_WIDTH,canvasConstants.GROUND_HEIGHT); 
+        this.headPosition = this.lastSnakeStateSaved[0];
+        this.snakeTail = this.lastSnakeStateSaved.slice(1,this.lastSnakeStateSaved.length)
+        this.drawSnake();
+    }
     moveSnake(){
         for(let i = 0; i < this.snakeTail.length-1;i++){
             this.snakeTail[i]= this.snakeTail[i+1]
@@ -102,6 +130,11 @@ export class Snake {
        this.snakeTail[this.snakeTail.length -1 ] = {x:this.headPosition.x, y:this.headPosition.y}
        this.headPosition.x += this.horizontalSpeed;
        this.headPosition.y += this.verticalSpeed;
+       if(this.headPosition.x === 0 || 
+        this.headPosition.y === 0||
+        this.headPosition.x ===  canvasConstants.UNIT_NUMBER-1 || 
+        this.headPosition.y === canvasConstants.UNIT_NUMBER-1)
+        this.saveState();
     }
      comparePosition(position1: Vector, position2: Vector) : boolean
     {

@@ -11,7 +11,6 @@ export const GROUND_CENTER : Vector =  {x:15,y:15};
 export const PREY_POSITION_RATIO= UNIT_WIDTH;
 export const PREY_TEST_POSITION: Vector =  {x:15,y:15}
 export const CENTERING_PREY_FACTOR = UNIT_WIDTH/5;
-export const SNAKE_SPEED = 1;
 export const PART_SNAKE_UNIT = SNAKE_WIDTH/17;
 export const HALF_PART_SNAKE_UNIT = PART_SNAKE_UNIT/2;
 export const SPEED_SCALE =  1;

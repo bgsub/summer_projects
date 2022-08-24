@@ -1,8 +1,7 @@
-import { Component, ElementRef, HostListener, OnInit, ViewChild } from '@angular/core';
-import { Prey } from '../interfaces/prey';
-import { CENTERING_PREY_FACTOR,PREY_SIZE, PREY_POSITION_RATIO, UNIT_HEIGHT, UNIT_WIDTH, PREY_TEST_POSITION } from '../constants/canvas-constants';
+import { Component, ElementRef, HostListener, OnInit, ViewChild ,DoCheck} from '@angular/core';
 import { GameService } from '../services/game.service';
 import { Direction } from '../enums/directions';
+import { Prey } from '../interfaces/prey';
 
 @Component({
   selector: 'app-play-area',
@@ -27,20 +26,21 @@ export class PlayAreaComponent implements OnInit {
   this.gameService.changeDirection(Direction.Up);
   this.startGame();
 }
+gamePrey: Prey;
   @ViewChild('groundCanvas',{static:true})
    private groundCanvas!: ElementRef<HTMLCanvasElement>;
-   gamePrey : Prey = {topPosition: 0, leftPosition: 0, height: 0, width: 0} 
+  
   constructor(private gameService: GameService) { 
-    const preyPosition  =  this.gameService.getRandomPosition();
-    const starting_prey : Prey = {topPosition: PREY_TEST_POSITION.y *PREY_POSITION_RATIO + CENTERING_PREY_FACTOR ,
-      leftPosition:PREY_TEST_POSITION.x *PREY_POSITION_RATIO + CENTERING_PREY_FACTOR,height:PREY_SIZE,width:PREY_SIZE}
-    // const starting_prey : Prey = {topPosition: preyPosition.y *PREY_POSITION_RATIO + CENTERING_PREY_FACTOR ,
-    // leftPosition:preyPosition.x *PREY_POSITION_RATIO + CENTERING_PREY_FACTOR,height:PREY_SIZE,width:PREY_SIZE}
-    this.gamePrey =  starting_prey;
-    console.log(preyPosition);
+    this.gamePrey = gameService.prey;
+  
   }
  
   ngOnInit(): void {
+    
+  }
+  ngDoCheck(): void{
+    this.gamePrey = this.gameService.prey;
+
   }
    ngAfterViewInit(): void {
     this.gameService.groundCtx = this.groundCanvas.nativeElement.getContext('2d') as CanvasRenderingContext2D;
