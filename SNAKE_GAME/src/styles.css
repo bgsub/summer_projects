@@ -1,1 +1,34 @@
 /* You can add global styles to this file, and also import other style files */
+@import url(https://fonts.googleapis.com/css?family=VT323);
+html {
+    font-family: 'VT323', monospace;
+    height: 100vh;
+    background: rgb(40,41,130);
+    background: linear-gradient(90deg, rgba(40,41,130,1) 0%, rgba(39,43,132,1) 0%, rgba(33,135,154,1) 30%, rgba(33,135,154,1) 70%, rgba(39,50,132,1) 97%, rgba(39,43,132,1) 100%, rgba(40,41,130,1) 100%);
+}
+body{
+    min-height: 100vh;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+button{
+    border-bottom: 6px inset rgba(0,0,0,.5);
+	border-left: 6px inset rgba(0,0,0,.5);
+	border-right: 6px inset rgba(255,255,255,.5);
+	border-top: 6px inset rgba(255,255,255,.5);
+	box-sizing: border-box;
+    box-shadow: rgb(38, 57, 77) 0px 20px 30px -10px;
+    font-family: 'VT323', monospace;
+    font-size: large;
+    margin-top: 10vh;
+    cursor: pointer;
+    transition: 0.2s ease-in-out;
+    background: rgb(187,169,43);
+    background: linear-gradient(90deg, rgba(187,169,43,1) 31%, rgba(231,60,14,0.9223039557619923) 86%);
+
+}
+button:hover, 
+button:focus {
+    transform: scale(0.95, 0.95);
+}

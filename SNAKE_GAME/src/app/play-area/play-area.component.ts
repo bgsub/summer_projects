@@ -44,8 +44,9 @@ gamePrey: Prey;
   }
    ngAfterViewInit(): void {
     this.gameService.groundCtx = this.groundCanvas.nativeElement.getContext('2d') as CanvasRenderingContext2D;
- 
-    this.gameService.initializeGround();
+    //* for testing the canvas*/
+    //this.gameService.initializeGround();
+    
     this.gameService.initializeSnake();
   }
   startGame(){
