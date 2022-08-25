@@ -1,6 +1,10 @@
 .side_bar_container{
     justify-content: center;
+    text-align: center;
     border: 1px solid black;
     width: 33vh;
     height:85vh;
+}
+.score_container{
+    margin-top: 10vh;
 }

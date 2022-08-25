@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { GameService } from '../services/game.service';
 
 @Component({
   selector: 'app-sidebar',
@@ -6,10 +7,16 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./sidebar.component.css']
 })
 export class SidebarComponent implements OnInit {
-
-  constructor() { }
+  score:number
+  constructor(private gameService:GameService) 
+  { 
+    this.score=gameService.score;
+  }
 
   ngOnInit(): void {
+  }
+  getScore(){
+    return this.gameService.score;
   }
 
 }

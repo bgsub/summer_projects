@@ -15,6 +15,7 @@ export class GameService {
   groundCtx!: CanvasRenderingContext2D;
   units: Cell[];
   snake: Snake
+  score:number;
   gameStarted: boolean;
   gameInterval:number;
   gameDuration: number;
@@ -27,6 +28,7 @@ export class GameService {
     this.snake = new Snake(this.groundCtx);
     this.gameStarted = false;
     this.gameInterval=0;
+    this.score= 0;
     this.boundaryCollision = false;
     this.gameDuration = DEFAULT_DURATION;
     this.preyPosition  =  this.getRandomPosition();
@@ -98,6 +100,7 @@ export class GameService {
         this.preyPosition = this.getRandomPosition()
         this.prey  = this.createAPrey(this.preyPosition);
         this.snake.addPartOnTail(this.snake.lastPartOfTheTail);
+        this.score+=1;
       }
   }
   snakeIsDead(){
