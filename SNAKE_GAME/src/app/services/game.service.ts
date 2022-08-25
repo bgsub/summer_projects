@@ -6,6 +6,7 @@ import { Direction } from '../enums/directions';
 import { CENTERING_PREY_FACTOR,PREY_SIZE, PREY_POSITION_RATIO, UNIT_HEIGHT, UNIT_WIDTH, PREY_TEST_POSITION } from '../constants/canvas-constants';
 import { Prey } from '../interfaces/prey';
 import { Vector } from '../interfaces/vector';
+import { DEFAULT_DURATION, UNDEFINED_POSITION } from '../constants/general-constants';
 
 @Injectable({
   providedIn: 'root',
@@ -15,6 +16,8 @@ export class GameService {
   units: Cell[];
   snake: Snake
   gameStarted: boolean;
+  gameInterval:number;
+  gameDuration: number;
   prey : Prey; 
   preyPosition: Vector;
   boundaryCollision:boolean;
@@ -23,7 +26,9 @@ export class GameService {
    this.prey  = {topPosition: 0, leftPosition: 0, height: 0, width: 0}
     this.snake = new Snake(this.groundCtx);
     this.gameStarted = false;
+    this.gameInterval=0;
     this.boundaryCollision = false;
+    this.gameDuration = DEFAULT_DURATION;
     this.preyPosition  =  this.getRandomPosition();
     this.prey =  this.createAPrey(this.preyPosition);
     //this.prey =  this.createAPrey(canvasConstants.PREY_TEST_POSITION);
@@ -41,6 +46,16 @@ export class GameService {
       if (this.units.indexOf(unit) % 2 === 0) unit.isUnitOdd = true;
       unit.drawUnit();
     }
+
+  }
+  resetGame(){
+     this.snake.resetSnake();
+     this.gameStarted = false;
+     this.gameInterval=0;
+     this.boundaryCollision = false;
+     this.gameDuration = DEFAULT_DURATION;
+     this.preyPosition = UNDEFINED_POSITION;
+     
 
   }
   createAPrey(position: Vector) {
@@ -75,6 +90,7 @@ export class GameService {
      return selfCol;
     
   }
+ 
   huntPrey(){
   
     if(this.snake.headPosition.x === this.preyPosition.x && 
@@ -90,23 +106,23 @@ export class GameService {
   }
   
    play(){
-   const gameInterval = window.setInterval(() => {
+    this.gameInterval = window.setInterval(() => {
     this.groundCtx.clearRect(0,0,canvasConstants.GROUND_WIDTH,canvasConstants.GROUND_HEIGHT); 
     this.snake.moveSnake();
     this.snake.drawSnake();
     this.huntPrey();
     if(this.checkBoundaryCollision()) {
-      clearInterval(gameInterval);
+      clearInterval(this.gameInterval);
       this.snake.collisionEffect();
       this.snake.drawDeadSnakeHead();
 
     };
     if(this.checkSelfCollision()) {
-      clearInterval(gameInterval);
+      clearInterval(this.gameInterval);
       this.snake.drawDeadSnakeHead();
     };
 
-   },100)
+   },DEFAULT_DURATION)
 
   }
   getRandomPosition(): Vector{

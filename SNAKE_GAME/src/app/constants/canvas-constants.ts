@@ -1,7 +1,7 @@
 import { Vector } from "../interfaces/vector";
 
-export const  GROUND_WIDTH = 800;
-export const GROUND_HEIGHT = 800;
+export const  GROUND_WIDTH = 600;
+export const GROUND_HEIGHT = 600;
 export const UNIT_NUMBER = 32;
 export const UNIT_WIDTH= GROUND_WIDTH/UNIT_NUMBER;
 export const UNIT_HEIGHT = GROUND_HEIGHT/UNIT_NUMBER;

@@ -20,7 +20,14 @@ export class Snake {
         this.lastSnakeStateSaved = [];
    
     }
-    
+    resetSnake(){
+        this.snakeContext.clearRect(0,0,canvasConstants.GROUND_WIDTH,canvasConstants.GROUND_HEIGHT);
+        this.headPosition = canvasConstants.GROUND_CENTER;
+        this.direction=Direction.Right;
+        const bodyPart : Vector = { x:this.headPosition.x-1 ,y:this.headPosition.y};
+        this.snakeTail.push(bodyPart); 
+        this.lastSnakeStateSaved = [];
+    }
     drawSnakeHead(){
         this.snakeContext.fillStyle = 'cyan';
         this.snakeContext.fillRect(
