@@ -61,7 +61,7 @@ export class Snake {
     }
     saveState(){
 
-        let snakeState : Vector[] = [];
+        const  snakeState : Vector[] = [];
         snakeState.push({x:this.headPosition.x,y:this.headPosition.y});
 
         for(const tailPart of this.snakeTail) 
@@ -77,7 +77,7 @@ export class Snake {
     }
     changeSnakeDirection(directionToGo:Direction)
     {
-        let prevDirection = this.direction
+        const  prevDirection = this.direction
         switch(directionToGo) {
             case Direction.Right: 
              if(prevDirection !== Direction.Left){
@@ -117,7 +117,7 @@ export class Snake {
     }
     
     addPartOnTail(position:Vector){
-        let  newPart : Vector = {x: position.x,y:position.y};
+        const  newPart : Vector = {x: position.x,y:position.y};
         this.snakeTail.push(newPart);
 
      }

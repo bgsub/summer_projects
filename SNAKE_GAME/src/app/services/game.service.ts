@@ -3,7 +3,7 @@ import { Cell } from '../classes/cell';
 import { Snake } from '../classes/snake';
 import * as canvasConstants from '../constants/canvas-constants';
 import { Direction } from '../enums/directions';
-import { CENTERING_PREY_FACTOR,PREY_SIZE, PREY_POSITION_RATIO, UNIT_HEIGHT, UNIT_WIDTH, PREY_TEST_POSITION } from '../constants/canvas-constants';
+import { CENTERING_PREY_FACTOR,PREY_SIZE, PREY_POSITION_RATIO,} from '../constants/canvas-constants';
 import { Prey } from '../interfaces/prey';
 import { Vector } from '../interfaces/vector';
 import { DEFAULT_DURATION, UNDEFINED_POSITION } from '../constants/general-constants';
@@ -119,11 +119,11 @@ export class GameService {
       this.snake.collisionEffect();
       this.snake.drawDeadSnakeHead();
 
-    };
+    }
     if(this.checkSelfCollision()) {
       clearInterval(this.gameInterval);
       this.snake.drawDeadSnakeHead();
-    };
+    }
 
    },DEFAULT_DURATION)
 

@@ -13,6 +13,7 @@ export class SidebarComponent implements OnInit {
     this.score=gameService.score;
   }
 
+  // eslint-disable-next-line @typescript-eslint/no-empty-function
   ngOnInit(): void {
   }
   getScore(){
