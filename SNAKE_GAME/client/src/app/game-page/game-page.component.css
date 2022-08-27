@@ -1,0 +1,41 @@
+body{
+    display: flex;
+}
+.play_area{
+    margin-left: 4vh;
+    margin-top: 10vh;
+
+}
+.sidebar{
+    margin-left: 20vh;
+    margin-top: 10vh;
+
+}
+.left_side{
+    justify-content: center;
+    align-items: center;
+}
+.side_buttons{
+    margin-left: 7vh;
+    margin-top: 40vh;
+}
+.title{
+    text-align: left;
+    margin-top: 0vh;
+    width: max-content;
+    height: max-content;
+
+}
+.title span{
+    text-align: left;
+    margin-left: 1vh;
+    font-size: 3vh;
+
+}
+#odd_letter{
+    color: #bba92b;
+    
+}
+#even_letter{
+    color: #e73c0e
+}

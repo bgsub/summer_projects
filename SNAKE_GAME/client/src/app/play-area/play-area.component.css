@@ -1,0 +1,20 @@
+.play_area_container{
+    justify-content: center;
+    border: 1px solid black;
+    width: 90vh;
+    height:85vh;
+}
+.canvas_container{
+    width: 63.05vh;
+    height: 63.05vh;
+    margin-top: 2.5vh;
+    margin-left: 5vh;
+    position: relative;
+}
+.ground{
+    background-color: #567d46;
+}
+.prey{
+    background-color: red ;
+    position: absolute;
+}

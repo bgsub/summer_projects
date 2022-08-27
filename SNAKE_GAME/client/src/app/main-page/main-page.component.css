@@ -1,0 +1,41 @@
+.main_page_container{
+    justify-content: center;
+    height: 70vh;
+}
+
+.box_title {
+
+    border: 1px solid black;
+    height: 20vh;
+    width: 60vh;
+    justify-content: center;
+    margin: 0 auto;
+    
+}
+.title{
+    margin: 4vh;;
+    text-align: center;
+}
+.title span{
+    text-align: center;
+    margin-left: 3vh;
+    font-size: 5vh;
+}
+#odd_letter{
+    color: #bba92b;
+    
+}
+#even_letter{
+    color: #e73c0e
+}
+.main_page_buttons_container{
+    margin: 10vh auto;
+    display: grid;
+    justify-content: center;
+    align-items: center;
+}
+.main_page_button{
+    height: 10vh;
+    width: 40vh;
+   
+}
