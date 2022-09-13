@@ -1,4 +1,4 @@
 export const environment = {
-  production: true,
-  serverUrl: 'hello_world'
+  production: false,
+  serverUrl: 'hello_world_url'
 };

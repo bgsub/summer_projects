@@ -15,6 +15,8 @@ export class SocketsClientHandlerService {
 
     connect() {
         this.socket = io(environment.serverUrl, { transports: ['websocket'], upgrade: false });
+        console.log(this.socket);
+
     }
 
     disconnect() {
