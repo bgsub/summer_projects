@@ -1,4 +1,5 @@
 import { Component} from '@angular/core';
+import { SocketsClientHandlerService } from '../services/sockets-client-handler.service';
 
 @Component({
   selector: 'app-main-page',
@@ -8,6 +9,11 @@ import { Component} from '@angular/core';
 export class MainPageComponent{
   title = 'SNAKE GAME';
   // eslint-disable-next-line @typescript-eslint/no-empty-function
-  constructor() { }
+  constructor(private socketHandler: SocketsClientHandlerService) {
+    if (!this.socketHandler.isSocketAlive()) {
+      this.socketHandler.connect();
+  }
+
+   }
 
 }
