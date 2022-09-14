@@ -19,5 +19,8 @@ export class SidebarComponent implements OnInit {
   getScore(){
     return this.gameService.score;
   }
+  getPlayerName(){
+    return this.gameService.playerName;
+  }
 
 }

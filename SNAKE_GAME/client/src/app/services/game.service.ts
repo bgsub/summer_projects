@@ -19,6 +19,7 @@ export class GameService {
   gameStarted: boolean;
   gameInterval:number;
   gameDuration: number;
+  playerName:  string;
   prey : Prey; 
   preyPosition: Vector;
   boundaryCollision:boolean;
@@ -27,6 +28,7 @@ export class GameService {
    this.prey  = {topPosition: 0, leftPosition: 0, height: 0, width: 0}
     this.snake = new Snake(this.groundCtx);
     this.gameStarted = false;
+    this.playerName = '';
     this.gameInterval=0;
     this.score= 0;
     this.boundaryCollision = false;

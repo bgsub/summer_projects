@@ -23,10 +23,26 @@
 </div>
 </div>
 <div class="main_page_buttons_container">
-<button  routerLink="/game-page" class="main_page_button">NOUVELLE PARTIE</button>
+    <button (click)="displayBoxInfo =true" class="main_page_button">NOUVELLE PARTIE</button>
     <button class="main_page_button">MEILLEURS SCORES</button>
-
 </div>
+<div [style.display]="displayBoxInfo?'grid':'none'" class="player_info"> 
+ <h2>entrez votre nom</h2>
+ <input                                       
+ class="nameInput"
+ type="text"
+ [(ngModel)]="playerName"
+ id="user"
+ placeholder="nom du joueur"
+ minlength="4"
+ maxlength="12"
+ pattern="[A-Za-z0-9]+"
+ required
+/>
+<span [style.color]="'red'" [style.font-size]="'17px'"  [hidden]="playerName.length>3">veuillez entrer un nom de 3 lettres et plus</span>
+<button [disabled]="playerName.length<3" (click)="gotToGame()"  class=" main_page_button " id="button_info"> JOUER </button>
+</div>
+
 </div>
 <router-outlet></router-outlet>
 </body>
