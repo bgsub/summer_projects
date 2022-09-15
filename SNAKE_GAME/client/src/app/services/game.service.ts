@@ -17,6 +17,7 @@ export class GameService {
   snake: Snake
   score:number;
   gameStarted: boolean;
+  snakeIsDead: boolean;
   gameInterval:number;
   gameDuration: number;
   playerName:  string;
@@ -35,11 +36,12 @@ export class GameService {
     this.gameDuration = DEFAULT_DURATION;
     this.preyPosition  =  this.getRandomPosition();
     this.prey =  this.createAPrey(this.preyPosition);
+    this.snakeIsDead = false;
     //this.prey =  this.createAPrey(canvasConstants.PREY_TEST_POSITION);
   }
 
   /* to test the cells and the ground*/
-
+   
   initializeGround() {
     for (let i = 0; i < canvasConstants.UNIT_NUMBER; i++) {
       for (let j = 0; j < canvasConstants.UNIT_NUMBER; j++) {
@@ -55,6 +57,7 @@ export class GameService {
   resetGame(){
      this.snake.resetSnake();
      this.gameStarted = false;
+     this.snakeIsDead = false;
      this.gameInterval=0;
      this.boundaryCollision = false;
      this.gameDuration = DEFAULT_DURATION;
@@ -94,6 +97,12 @@ export class GameService {
      return selfCol;
     
   }
+  restartGame(){
+    this.resetGame();
+    this.snake.headPosition = canvasConstants.SNAKE_TEST_POSITION;
+    
+    this.initializeSnake();
+  }
  
   huntPrey(){
   
@@ -104,10 +113,6 @@ export class GameService {
         this.snake.addPartOnTail(this.snake.lastPartOfTheTail);
         this.score+=1;
       }
-  }
-  snakeIsDead(){
-    return (this.checkBoundaryCollision()|| this.checkSelfCollision());
-
   }
   
    play(){
@@ -120,6 +125,7 @@ export class GameService {
       clearInterval(this.gameInterval);
       this.snake.collisionEffect();
       this.snake.drawDeadSnakeHead();
+      this.snakeIsDead = true;
 
     }
     if(this.checkSelfCollision()) {

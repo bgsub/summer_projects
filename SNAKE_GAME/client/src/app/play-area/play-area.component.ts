@@ -27,6 +27,7 @@ export class PlayAreaComponent implements OnInit {
   this.startGame();
 }
 gamePrey: Prey;
+displayBox = false;
   @ViewChild('groundCanvas',{static:true})
    private groundCanvas!: ElementRef<HTMLCanvasElement>;
   
@@ -40,6 +41,7 @@ gamePrey: Prey;
   }
   ngDoCheck(): void{
     this.gamePrey = this.gameService.prey;
+    this.displayBox = this.gameService.snakeIsDead;
 
   }
    ngAfterViewInit(): void {
@@ -54,6 +56,13 @@ gamePrey: Prey;
 
   delay(ms: number) {
     return new Promise( resolve => setTimeout(resolve, ms) );
+}
+restartGame(){
+this.gameService.restartGame()
+
+}
+goToHomePage(){
+  
 }
     
 }

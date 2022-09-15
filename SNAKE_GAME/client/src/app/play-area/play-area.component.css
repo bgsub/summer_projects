@@ -1,8 +1,9 @@
 .play_area_container{
     justify-content: center;
-    border: 1px solid black;
     width: 90vh;
     height:85vh;
+    box-shadow: rgb(38, 57, 77) 0px 20px 30px -10px;
+    overflow: hidden;
 }
 .canvas_container{
     width: 63.05vh;
@@ -11,6 +12,29 @@
     margin-left: 5vh;
     position: relative;
 }
+.end_game_box{
+    height: 45vh;
+    display: grid;
+    width: 60vh;
+    text-align: center;
+     margin: 0 auto;
+    z-index: 10;
+    top : 25vh;
+    left: 72vh;
+    margin-top: 10px;
+    background: rgb(40,41,130);
+    box-shadow: rgb(38, 57, 77) 0px 20px 30px -10px;
+    background: linear-gradient(90deg, rgba(40,41,130,1) 0%, rgba(39,43,132,1) 0%, rgba(33,135,154,1) 30%, rgba(33,135,154,1) 70%, rgba(39,50,132,1) 97%, rgba(39,43,132,1) 100%, rgba(40,41,130,1) 100%);
+    position: absolute;
+   
+}
+#button_game{
+    height: 7vh;
+    width: 20vh;
+    margin: 0 auto;
+    margin-top: 5vh;
+}
+
 .ground{
     background-color: #567d46;
 }

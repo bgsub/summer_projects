@@ -7,26 +7,23 @@ export class Snake {
     snakeTail: Vector[] =[];
     snakeContext : CanvasRenderingContext2D;
     direction: Direction;
-    verticalSpeed = 0;
-    horizontalSpeed = 0;
+    verticalSpeed : number;
+    horizontalSpeed : number;
     lastSnakeStateSaved : Vector[];
 
     constructor(ctx: CanvasRenderingContext2D){
         this.snakeContext = ctx;
-        this.headPosition =  canvasConstants.GROUND_CENTER;
+        this.headPosition =  canvasConstants.SNAKE_TEST_POSITION;
         this.direction = Direction.Right;
         const bodyPart : Vector = { x:this.headPosition.x-1 ,y:this.headPosition.y};
         this.snakeTail.push(bodyPart); 
         this.lastSnakeStateSaved = [];
+        this.verticalSpeed = 0; 
+        this.horizontalSpeed = 0;
    
     }
     resetSnake(){
         this.snakeContext.clearRect(0,0,canvasConstants.GROUND_WIDTH,canvasConstants.GROUND_HEIGHT);
-        this.headPosition = canvasConstants.GROUND_CENTER;
-        this.direction=Direction.Right;
-        const bodyPart : Vector = { x:this.headPosition.x-1 ,y:this.headPosition.y};
-        this.snakeTail.push(bodyPart); 
-        this.lastSnakeStateSaved = [];
     }
     drawSnakeHead(){
         this.snakeContext.fillStyle = 'cyan';
@@ -148,5 +145,6 @@ export class Snake {
           return  Math.ceil(position1.x) === Math.ceil(position2.x) && Math.ceil(position1.y) ===Math.ceil(position2.y) 
          
     }
+    
 }
 

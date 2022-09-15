@@ -8,6 +8,7 @@ export const UNIT_HEIGHT = GROUND_HEIGHT/UNIT_NUMBER;
 export const PREY_SIZE = 2*UNIT_HEIGHT/3;
 export const SNAKE_WIDTH = UNIT_WIDTH;
 export const GROUND_CENTER : Vector =  {x:15,y:15};
+export const SNAKE_TEST_POSITION : Vector =  {x:29,y:15};
 export const PREY_POSITION_RATIO= UNIT_WIDTH;
 export const PREY_TEST_POSITION: Vector =  {x:15,y:15}
 export const CENTERING_PREY_FACTOR = UNIT_WIDTH/5;
