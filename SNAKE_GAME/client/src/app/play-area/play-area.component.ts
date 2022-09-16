@@ -2,6 +2,7 @@ import { Component, ElementRef, HostListener, OnInit, ViewChild ,DoCheck} from '
 import { GameService } from '../services/game.service';
 import { Direction } from '../enums/directions';
 import { Prey } from '../interfaces/prey';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-play-area',
@@ -28,10 +29,11 @@ export class PlayAreaComponent implements OnInit {
 }
 gamePrey: Prey;
 displayBox = false;
+score=0;
   @ViewChild('groundCanvas',{static:true})
    private groundCanvas!: ElementRef<HTMLCanvasElement>;
   
-  constructor(private gameService: GameService) { 
+  constructor( public router: Router,private gameService: GameService) { 
     this.gamePrey = gameService.prey;
   
   }
@@ -42,6 +44,7 @@ displayBox = false;
   ngDoCheck(): void{
     this.gamePrey = this.gameService.prey;
     this.displayBox = this.gameService.snakeIsDead;
+    this.score = this.gameService.score;
 
   }
    ngAfterViewInit(): void {
@@ -62,7 +65,7 @@ this.gameService.restartGame()
 
 }
 goToHomePage(){
-  
+  this.router.navigate(['/home-page']);
 }
     
 }

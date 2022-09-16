@@ -8,8 +8,8 @@
 </div>
 <div [style.display]="displayBox?'grid':'none'" class="end_game_box"> 
     <h2>Voulez essayer de nouveau ?</h2>
-   <button  (click)="restartGame()"  class=" main_page_button " id="button_game"> OUI </button>
-   <button  (click)="goToHomePage()"  class=" main_page_button " id="button_game"> NON </button>
+   <h3> Votre score est de {{score}}</h3>
+   <button  (click)="goToHomePage()"  class=" main_page_button " id="button_game"> Quitter </button>
    </div>
     
 </div>
