@@ -20,19 +20,14 @@ export class MainPageComponent implements OnInit{
      
    }
   ngOnInit(): void {
-    this.socketHandler.connect();
-    this.socketBehaviorTest();
-}
-socketBehaviorTest(){
-  this.socketHandler.socket.on("connect",()=>{
-    console.log('hi');
-    this.socketHandler.socket.emit("helloBack","hello");
 
-  });
+
 }
+
  
 gotToGame(){
   this.gameService.playerName = this.playerName;
+  // save the name in a local storage for when player wanna restart
   localStorage.setItem('name', this.gameService.playerName!);
   this.router.navigate(['/game-page']);
 }

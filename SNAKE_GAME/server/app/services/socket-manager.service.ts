@@ -8,11 +8,7 @@ constructor(server: http.Server) {
 }
 handleSockets(): void {
     this.sio.on('connection', (socket) => {
-        console.log(socket.id)
-        const message =  1;
-      //  console.log('hello');
-        socket.emit('sayHello',message);
-        socket.on('helloBack', (arg) => {
+        socket.on('gameInfos', (arg) => {
             console.log(arg);
          });
         socket.on('disconnect', () => {

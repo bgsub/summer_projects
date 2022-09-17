@@ -3,6 +3,7 @@ import { GameService } from '../services/game.service';
 import { Direction } from '../enums/directions';
 import { Prey } from '../interfaces/prey';
 import { Router } from '@angular/router';
+import { SocketsClientHandlerService } from '../services/sockets-client-handler.service';
 
 @Component({
   selector: 'app-play-area',
@@ -33,12 +34,13 @@ score=0;
   @ViewChild('groundCanvas',{static:true})
    private groundCanvas!: ElementRef<HTMLCanvasElement>;
   
-  constructor( public router: Router,private gameService: GameService) { 
+  constructor(    private socketHandler: SocketsClientHandlerService, public router: Router,private gameService: GameService) { 
     this.gamePrey = gameService.prey;
   
   }
   // load the name from a local storage for when player wants to restart the game 
   ngOnInit(): void {
+    this.socketHandler.connect();
     const name = localStorage.getItem('name');
     this.gameService.playerName = name;
     
@@ -64,15 +66,21 @@ score=0;
 }
 
 restartGame(){
+this.sendScoreToServer();
 window.location.reload();
 
 }
 //refresh game page 
 goToHomePage(){
+  this.sendScoreToServer();
   this.router.navigate(['/home-page'])
   .then(() => {
     window.location.reload();
   });
+}
+sendScoreToServer(){
+  const data = {playerName:this.gameService.playerName, score: this.gameService.score}
+  this.socketHandler.send('gameInfos',data);
 }
     
 }
