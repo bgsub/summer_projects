@@ -13,7 +13,7 @@ export class Snake {
 
     constructor(ctx: CanvasRenderingContext2D){
         this.snakeContext = ctx;
-        this.headPosition =  canvasConstants.SNAKE_TEST_POSITION;
+        this.headPosition =  canvasConstants.GROUND_CENTER;
         this.direction = Direction.Right;
         const bodyPart : Vector = { x:this.headPosition.x-1 ,y:this.headPosition.y};
         this.snakeTail.push(bodyPart); 

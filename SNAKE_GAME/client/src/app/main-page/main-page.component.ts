@@ -23,15 +23,17 @@ export class MainPageComponent implements OnInit{
     this.socketHandler.connect();
     this.socketBehaviorTest();
 }
- socketBehaviorTest(){
+socketBehaviorTest(){
   this.socketHandler.socket.on("connect",()=>{
     console.log('hi');
     this.socketHandler.socket.emit("helloBack","hello");
 
   });
 }
+ 
 gotToGame(){
   this.gameService.playerName = this.playerName;
+  localStorage.setItem('name', this.gameService.playerName!);
   this.router.navigate(['/game-page']);
 }
 }

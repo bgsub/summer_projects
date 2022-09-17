@@ -20,7 +20,7 @@ export class GameService {
   snakeIsDead: boolean;
   gameInterval:number;
   gameDuration: number;
-  playerName:  string;
+  playerName:  string|null;
   prey : Prey; 
   preyPosition: Vector;
   boundaryCollision:boolean;
@@ -54,17 +54,18 @@ export class GameService {
     }
 
   }
-  resetGame(){
-     this.snake.resetSnake();
-     this.gameStarted = false;
-     this.snakeIsDead = false;
-     this.gameInterval=0;
-     this.boundaryCollision = false;
-     this.gameDuration = DEFAULT_DURATION;
-     this.preyPosition = UNDEFINED_POSITION;
+  // resetGame(){
+  //   clearInterval(this.gameInterval);
+  //   console.log(this.gameStarted)
+  //   //  this.gameStarted = false;
+  //   //  this.snakeIsDead = false;
+  //   //  this.gameInterval=0;
+  //   //  this.boundaryCollision = false;
+  //   //  this.gameDuration = DEFAULT_DURATION;
+  //   //  this.preyPosition = UNDEFINED_POSITION;
      
 
-  }
+  // }
   createAPrey(position: Vector) {
     const createdPrey : Prey = {topPosition: position.y *PREY_POSITION_RATIO + CENTERING_PREY_FACTOR ,
       leftPosition:position.x *PREY_POSITION_RATIO + CENTERING_PREY_FACTOR,height:PREY_SIZE,width:PREY_SIZE};
@@ -96,12 +97,6 @@ export class GameService {
      }
      return selfCol;
     
-  }
-  restartGame(){
-    this.resetGame();
-    this.snake.headPosition = canvasConstants.SNAKE_TEST_POSITION;
-    
-    this.initializeSnake();
   }
  
   huntPrey(){

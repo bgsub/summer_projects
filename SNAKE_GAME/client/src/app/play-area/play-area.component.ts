@@ -37,8 +37,10 @@ score=0;
     this.gamePrey = gameService.prey;
   
   }
- 
+  // load the name from a local storage for when player wants to restart the game 
   ngOnInit(): void {
+    const name = localStorage.getItem('name');
+    this.gameService.playerName = name;
     
   }
   ngDoCheck(): void{
@@ -60,12 +62,17 @@ score=0;
   delay(ms: number) {
     return new Promise( resolve => setTimeout(resolve, ms) );
 }
+
 restartGame(){
-this.gameService.restartGame()
+window.location.reload();
 
 }
+//refresh game page 
 goToHomePage(){
-  this.router.navigate(['/home-page']);
+  this.router.navigate(['/home-page'])
+  .then(() => {
+    window.location.reload();
+  });
 }
     
 }
