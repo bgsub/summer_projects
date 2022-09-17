@@ -24,7 +24,7 @@
 </div>
 <div class="main_page_buttons_container">
     <button (click)="displayBoxInfo =true" class="main_page_button">NOUVELLE PARTIE</button>
-    <button class="main_page_button">MEILLEURS SCORES</button>
+    <button (click)="showBestScores()" class="main_page_button">MEILLEURS SCORES</button>
 </div>
 <div [style.display]="displayBoxInfo?'grid':'none'" class="player_info"> 
  <h2>entrez votre nom</h2>
@@ -42,7 +42,25 @@
 <span [style.color]="'red'" [style.font-size]="'17px'"  [hidden]="playerName.length>3">veuillez entrer un nom de 3 lettres et plus</span>
 <button [disabled]="playerName.length<3" (click)="gotToGame()"  class=" main_page_button " id="button_info"> JOUER </button>
 </div>
+<div [style.display]="displayBestScores?'block':'none'" class="player_info"> 
+   <span (click)="closeBestScoresPop()" class="close_best_scores">x</span>
+   <div class="column">
+    <table>
+        <h1 class="center">MODE CLASSIQUE</h1>
 
+        <tr>
+            <th>Numero</th>
+            <th>Noms des joueurs</th>
+            <th>Score</th>
+        </tr>
+        <tr *ngFor="let score of bestScores; let i = index">
+            <td>{{ i + 1 }}</td>
+            <td>{{ score.playerName }}</td>
+            <td>{{ score.score }}</td>
+        </tr>
+    </table>
+   </div>
+</div>
 </div>
 <router-outlet></router-outlet>
 </body>

@@ -69,3 +69,36 @@ input {
     width: 40vh;
    
 }
+.row {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+
+.row::after {
+    content: '';
+    clear: both;
+    display: table;
+}
+
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+    width: 100%;
+    border: 1px solid #ddd;
+    border: 3px solid #b4f6f6;
+}
+
+th,
+td {
+    text-align: left;
+    padding: 2vh;
+}
+.close_best_scores{
+  font-size: 8vh;
+  cursor: pointer;
+}
+tr:nth-child(even) {
+    background-color: #f2f2f2;
+    border: 1px solid green;
+}

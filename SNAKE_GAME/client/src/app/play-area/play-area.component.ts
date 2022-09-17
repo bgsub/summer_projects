@@ -80,7 +80,7 @@ goToHomePage(){
 }
 sendScoreToServer(){
   const data = {playerName:this.gameService.playerName, score: this.gameService.score}
-  this.socketHandler.send('gameInfos',data);
+  this.socketHandler.send('addScore',data);
 }
     
 }
