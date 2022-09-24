@@ -24,7 +24,7 @@ export class DatabaseService {
             this.client = client;
             this.db =  this.client.db();
             //// if we need to reset the database , uncomment the next line
-            /*this.resetScores()*/
+            //this.resetScores()
             if ((await this.db.collection('meilleurs_scores').countDocuments()) === 0) 
              this.populateScores();
             console.log('database connected')

@@ -22,7 +22,7 @@ handleSockets(): void {
 
          })
         socket.on('disconnect', () => {
-           console.log('left');
+            //do nothing for now
         });
     });
 }

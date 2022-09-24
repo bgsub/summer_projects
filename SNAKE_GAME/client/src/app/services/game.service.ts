@@ -126,6 +126,7 @@ export class GameService {
     if(this.checkSelfCollision()) {
       clearInterval(this.gameInterval);
       this.snake.drawDeadSnakeHead();
+      this.snakeIsDead = true;
     }
 
    },DEFAULT_DURATION)
