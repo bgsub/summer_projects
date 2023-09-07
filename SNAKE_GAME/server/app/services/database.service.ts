@@ -13,20 +13,20 @@ export class DatabaseService {
 
     
     get bestScoresCollection(): Collection<Score> {
-        return this.db.collection('meilleurs_scores');
+        return this.db.collection('best_scores');
     }
     get database() {
         return this.db;
     }
     async start(){
         try {
-            const client = await MongoClient.connect("mongodb+srv://yanbra:snakeproject@cluster0.ldrhllv.mongodb.net/?retryWrites=true&w=majority");
+            const client = await MongoClient.connect("mongodb://127.0.0.1:27017/best_scores");
             this.client = client;
             this.db =  this.client.db();
             //// if we need to reset the database , uncomment the next line
-            //this.resetScores()
-            if ((await this.db.collection('meilleurs_scores').countDocuments()) === 0) 
-             this.populateScores();
+            this.resetScores()
+            if ((await this.db.collection('best_scores').countDocuments()) === 0) 
+             //this.populateScores();
             console.log('database connected')
         } catch(e) {
             console.log(e);
@@ -50,7 +50,7 @@ export class DatabaseService {
         ];
 
         for (const score of scores) {
-            await this.db.collection('meilleurs_scores').insertOne(score);
+            await this.db.collection('best_scores').insertOne(score);
         }
     }
 
@@ -85,7 +85,7 @@ export class DatabaseService {
         return scoresList;
     }
     async resetScores(): Promise<void> {
-        this.db.collection('meilleurs_scores').drop();
+        this.db.collection('best_scores').drop();
         this.populateScores();
     }
 
