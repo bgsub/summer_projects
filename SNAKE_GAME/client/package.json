@@ -1,9 +1,12 @@
 {
   "name": "snake-game",
-  "version": "0.0.0",
+  "version": "1.0.0",
+  "main": "main.js",
   "scripts": {
     "ng": "ng",
     "start": "ng serve --open",
+    "start:electron": "ng build --base-href ./ && electron .",
+    "build:electron": "ng build && electron-packager . --asar --ignore=/node_modules --ignore=/e2e --ignore=/src --overwrite --out=./build",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
@@ -41,6 +44,8 @@
     "@types/jasmine": "~4.0.0",
     "@typescript-eslint/eslint-plugin": "^5.35.1",
     "@typescript-eslint/parser": "^5.35.1",
+    "electron": "^26.2.0",
+    "electron-packager": "^17.1.2",
     "eslint": "^8.19.0",
     "jasmine-core": "~4.1.0",
     "karma": "~6.3.0",

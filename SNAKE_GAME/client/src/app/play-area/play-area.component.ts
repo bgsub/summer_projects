@@ -73,7 +73,8 @@ window.location.reload();
 //refresh game page 
 goToHomePage(){
   this.sendScoreToServer();
-  this.router.navigate(['/home-page'])
+  window.location.reload();
+  this.router.navigate(['./'])
   .then(() => {
     window.location.reload();
   });
