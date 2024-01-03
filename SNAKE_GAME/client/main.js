@@ -1,5 +1,5 @@
 const { app, BrowserWindow } = require('electron');
-
+//const path = require('node:path')
 let appWindow;
 
 function initWindow() {
@@ -9,17 +9,18 @@ function initWindow() {
         width: 1000,
         webPreferences: {
             nodeIntegration: true,
+            //preload: path.join(__dirname, 'preload.js')
         },
     });
 
     // Electron Build Path
-    const path = `file://${__dirname}/dist/snake-game/index.html`;
-    appWindow.loadURL(path);
+    const indexPath = `file://${__dirname}/dist/snake-game/index.html`;
+    appWindow.loadURL(indexPath);
 
     appWindow.setMenuBarVisibility(false)
 
     // Initialize the DevTools.
-    // appWindow.webContents.openDevTools()
+     appWindow.webContents.openDevTools()
 
     appWindow.on('closed', function () {
         appWindow = null;

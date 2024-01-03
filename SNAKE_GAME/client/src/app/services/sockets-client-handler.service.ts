@@ -16,7 +16,6 @@ export class SocketsClientHandlerService {
     connect() {
         this.socket = io(environment.serverUrl, { transports: ['websocket'], upgrade: false });
         console.log(this.socket);
-
     }
 
     disconnect() {
@@ -34,5 +33,6 @@ export class SocketsClientHandlerService {
             this.socket.emit(event);
         }
     }
+    
 
 }
